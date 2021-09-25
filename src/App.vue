@@ -1,7 +1,9 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/">常用编码转换</router-link> |
+    <router-link to="/randomcode">中文乱码转换</router-link> |
+    <router-link to="/about">图片Base64编码</router-link> |
+    <router-link to='/timestamp'>日期时间戳转换</router-link>
   </div>
   <router-view/>
 </template>

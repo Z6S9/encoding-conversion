@@ -8,6 +8,11 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "element-plus": "^1.1.0-beta.16",
+    "gbk-encode": "^1.0.1",
+    "js-base64": "^3.7.2",
+    "unplugin-vue-components": "^0.15.3",
+    "utf8-to-ansi": "^1.0.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
