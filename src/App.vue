@@ -5,16 +5,31 @@
     <router-link to="/about">图片Base64编码</router-link> |
     <router-link to='/timestamp'>日期时间戳转换</router-link>
   </div>
-  <router-view/>
+  
+  <el-container>
+    <el-main>
+      <div class="layout">
+        <router-view v-slot="{ Component }">
+          <transition name="fade">
+                <component :is="Component" />
+              </transition>
+        </router-view>
+      </div>
+    </el-main>
+  </el-container>
+  
+  
 </template>
 
 <style>
 #app {
+  min-height: 100%;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #3A8EE6;
 }
 
 #nav {
@@ -29,6 +44,20 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  padding: 5px;
+  border-radius: 5px;
+  border:solid #fff 2px;
+  color: #fff;
 }
+
+.layout {
+  width: 1300px;
+  padding: 30px;
+  margin: auto;
+  box-shadow: 1px 1px 6px #c9d3dd;
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: #fff;
+}
+
 </style>

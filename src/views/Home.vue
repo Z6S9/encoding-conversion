@@ -1,196 +1,190 @@
 <template>
-  <el-container>
-    <el-main>
-      <div class="layout">
-        <!-- 文本输入 -->
-        <el-row justify="center">
-          <el-col :span="8">
-            <el-input
-              v-model="textInput"
-              placeholder="请输入您想转化的文本"
-              type="textarea"
-              rows="5"
-              id="input"
-              :autosize="{ minRows: 6, maxRows: 8 }"
-              suffix-icon="false"
-              resize="none"
-            ></el-input>
-          </el-col>
-        </el-row>
-        <el-row justify="center" align="middle">
-          <el-col :span="2" class="change-text">
-            转换中文为:
-          </el-col>
-          <el-col :span="2">
-            <el-button
-              type="primary"
-              size="medium"
-              v-on:click="encodeFunction('base64')"
-              >base64</el-button
-            >
-          </el-col>
-          <el-col :span="2">
-            <el-button
-              type="primary"
-              size="medium"
-              v-on:click="encodeFunction('unicode')"
-              >Unicode</el-button
-            >
-          </el-col>
-          <el-col :span="2">
-            <el-button
-              type="primary"
-              size="medium"
-              v-on:click="encodeFunction('utf8')"
-              >UTF-8</el-button
-            >
-          </el-col>
-          <el-col :span="2">
-            <el-button
-              type="primary"
-              size="medium"
-              v-on:click="encodeFunction('gbk')"
-            >
-              GBK
-            </el-button>
-          </el-col>
-          <el-button
-              type="text"
-              class="clear-button"
-              v-on:click="clearTest('input')"
-            >
-              清空结果
-            </el-button>
-        </el-row>
-
-        <!-- base64 && unicode -->
-        <el-row justify="center" align="middle" style="margin-top:50px ">
-          <!-- base64文本框 -->
-          <el-col :span="6">
-            <el-input
-              v-model="textBase64"
-              id="base64"
-              placeholder="请输入您想转化的 base64 编码"
-              type="textarea"
-              resize="none"
-              rows="5"
-              :autosize="{ minRows: 6, maxRows: 8 }"
-            ></el-input>
-          </el-col>
-          <!-- unicode文本框 -->
-          <el-col :span="6" :offset="1">
-            <el-input
-              v-model="textUnicode"
-              id="Unicode"
-              placeholder="请输入您想转化的 Unicode 编码"
-              type="textarea"
-              resize="none"
-              rows="5"
-              :autosize="{ minRows: 6, maxRows: 8 }"
-            ></el-input>
-          </el-col>
-          <!-- <el-col :span="2">
-          <el-button type="info" v-on:click="copyText('base64')"
-            >复制
-          </el-button>
-        </el-col> -->
-        </el-row>
-
-        <el-row>
-          <el-col :span="6" style="margin-left:320px">
-            <el-button
-              type="info"
-              size="medium"
-              v-on:click="decodeFunction('base64')"
-            >
-              base64转中文
-            </el-button>
-            <el-button
-              type="text"
-              class="clear-button"
-              v-on:click="clearTest('base64')"
-            >
-              清空结果
-            </el-button>
-          </el-col>
-          <el-col :span="6" style="margin-left:80px">
-            <el-button type="info" size="medium" v-on:click="decodeFunction('unicode')">
-              Unicode转中文
-            </el-button>
-            <el-button
-              type="text"
-              class="clear-button"
-              v-on:click="clearTest('Unicode')"
-            >
-              清空结果
-            </el-button>
-          </el-col>
-        </el-row>
-
-        <!-- utf8 && gbk -->
-        <el-row justify="center" align="middle" style="margin-top:50px;">
-          <!-- utf8文本框 -->
-          <el-col :span="6">
-            <el-input
-              v-model="textUtf8"
-              id="utf8"
-              placeholder="请输入您想转化的 utf8 编码"
-              type="textarea"
-              resize="none"
-              rows="5"
-              :autosize="{ minRows: 6, maxRows: 8 }"
-              clearable
-            ></el-input>
-          </el-col>
-          <!-- gbk文本框 -->
-          <el-col :span="6" :offset="1">
-            <el-input
-              v-model="textGbk"
-              id="gbk"
-              placeholder="请输入您想转化的 gbk 编码"
-              type="textarea"
-              resize="none"
-              rows="5"
-              :autosize="{ minRows: 6, maxRows: 8 }"
-              clearable
-            ></el-input>
-          </el-col>
-          <!-- <el-col :span="2">
-          <el-button type="info" v-on:click="copyText('base64')"
-            >复制
-          </el-button>
-        </el-col> -->
-        </el-row>
-
-        <el-row>
-          <el-col :span="6" style="margin-left:320px">
-            <el-button type="info" size="medium" v-on:click="decodeFunction('utf8')">
-              UTF-8转中文
-            </el-button>
-            <el-button
-              type="text"
-              class="clear-button"
-              v-on:click="clearTest('utf8')"
-            >
-              清空结果
-            </el-button>
-          </el-col>
-          <el-col :span="6" style="margin-left:80px">
-            <el-button type="info" size="medium" v-on:click="decodeFunction('gbk')">
-              GBK转中文
-            </el-button>
-            <el-button
-              type="text"
-              class="clear-button"
-              v-on:click="clearTest('gbk')"
-            >
-              清空结果
-            </el-button>
-          </el-col>
-        </el-row>
-      </div>
-    </el-main>
-  </el-container>
+  <!-- 文本输入 -->
+  <el-row justify="center">
+    <el-col :span="8">
+      <el-input
+        v-model="textInput"
+        placeholder="请输入您想转化的文本"
+        type="textarea"
+        rows="5"
+        id="input"
+        :autosize="{ minRows: 6, maxRows: 8 }"
+        suffix-icon="false"
+        resize="none"
+      ></el-input>
+    </el-col>
+  </el-row>
+  <el-row justify="center" align="middle">
+    <el-col :span="2" class="change-text">
+      转换中文为:
+    </el-col>
+    <el-col :span="2">
+      <el-button
+        type="primary"
+        size="medium"
+        v-on:click="encodeFunction('base64')"
+        >base64</el-button
+      >
+    </el-col>
+    <el-col :span="2">
+      <el-button
+        type="primary"
+        size="medium"
+        v-on:click="encodeFunction('unicode')"
+        >Unicode</el-button
+      >
+    </el-col>
+    <el-col :span="2">
+      <el-button
+        type="primary"
+        size="medium"
+        v-on:click="encodeFunction('utf8')"
+        >UTF-8</el-button
+      >
+    </el-col>
+    <el-col :span="2">
+      <el-button
+        type="primary"
+        size="medium"
+        v-on:click="encodeFunction('gbk')"
+      >
+        GBK
+      </el-button>
+    </el-col>
+    <el-button
+        type="text"
+        class="clear-button"
+        v-on:click="clearTest('input')"
+      >
+        清空结果
+      </el-button>
+  </el-row>
+  
+  <!-- base64 && unicode -->
+  <el-row justify="center" align="middle" style="margin-top:50px ">
+    <!-- base64文本框 -->
+    <el-col :span="6">
+      <el-input
+        v-model="textBase64"
+        id="base64"
+        placeholder="请输入您想转化的 base64 编码"
+        type="textarea"
+        resize="none"
+        rows="5"
+        :autosize="{ minRows: 6, maxRows: 8 }"
+      ></el-input>
+    </el-col>
+    <!-- unicode文本框 -->
+    <el-col :span="6" :offset="1">
+      <el-input
+        v-model="textUnicode"
+        id="Unicode"
+        placeholder="请输入您想转化的 Unicode 编码"
+        type="textarea"
+        resize="none"
+        rows="5"
+        :autosize="{ minRows: 6, maxRows: 8 }"
+      ></el-input>
+    </el-col>
+    <!-- <el-col :span="2">
+    <el-button type="info" v-on:click="copyText('base64')"
+      >复制
+    </el-button>
+  </el-col> -->
+  </el-row>
+  
+  <el-row>
+    <el-col :span="6" style="margin-left:320px">
+      <el-button
+        type="info"
+        size="medium"
+        v-on:click="decodeFunction('base64')"
+      >
+        base64转中文
+      </el-button>
+      <el-button
+        type="text"
+        class="clear-button"
+        v-on:click="clearTest('base64')"
+      >
+        清空结果
+      </el-button>
+    </el-col>
+    <el-col :span="6" style="margin-left:80px">
+      <el-button type="info" size="medium" v-on:click="decodeFunction('unicode')">
+        Unicode转中文
+      </el-button>
+      <el-button
+        type="text"
+        class="clear-button"
+        v-on:click="clearTest('Unicode')"
+      >
+        清空结果
+      </el-button>
+    </el-col>
+  </el-row>
+  
+  <!-- utf8 && gbk -->
+  <el-row justify="center" align="middle" style="margin-top:50px;">
+    <!-- utf8文本框 -->
+    <el-col :span="6">
+      <el-input
+        v-model="textUtf8"
+        id="utf8"
+        placeholder="请输入您想转化的 utf8 编码"
+        type="textarea"
+        resize="none"
+        rows="5"
+        :autosize="{ minRows: 6, maxRows: 8 }"
+        clearable
+      ></el-input>
+    </el-col>
+    <!-- gbk文本框 -->
+    <el-col :span="6" :offset="1">
+      <el-input
+        v-model="textGbk"
+        id="gbk"
+        placeholder="请输入您想转化的 gbk 编码"
+        type="textarea"
+        resize="none"
+        rows="5"
+        :autosize="{ minRows: 6, maxRows: 8 }"
+        clearable
+      ></el-input>
+    </el-col>
+    <!-- <el-col :span="2">
+    <el-button type="info" v-on:click="copyText('base64')"
+      >复制
+    </el-button>
+  </el-col> -->
+  </el-row>
+  
+  <el-row>
+    <el-col :span="6" style="margin-left:320px">
+      <el-button type="info" size="medium" v-on:click="decodeFunction('utf8')">
+        UTF-8转中文
+      </el-button>
+      <el-button
+        type="text"
+        class="clear-button"
+        v-on:click="clearTest('utf8')"
+      >
+        清空结果
+      </el-button>
+    </el-col>
+    <el-col :span="6" style="margin-left:80px">
+      <el-button type="info" size="medium" v-on:click="decodeFunction('gbk')">
+        GBK转中文
+      </el-button>
+      <el-button
+        type="text"
+        class="clear-button"
+        v-on:click="clearTest('gbk')"
+      >
+        清空结果
+      </el-button>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
@@ -311,12 +305,7 @@ export default {
 </script>
 
 <style scoped>
-.layout {
-  width: 1300px;
-  padding: 30px 0;
-  margin: auto;
-  box-shadow: 1px 1px 6px #c9d3dd;
-}
+
 .el-row {
   margin: 15px;
 }
