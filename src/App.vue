@@ -18,12 +18,14 @@
 }
 
 #nav {
-  padding: 30px;
+  padding: 20px;
 }
 
 #nav a {
+  margin:0 10px;
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
 #nav a.router-link-exact-active {
