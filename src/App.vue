@@ -1,7 +1,7 @@
 <template>
   <div id="nav">
     <router-link to="/">常用编码转换</router-link> |
-    <router-link to="/randomcode">中文乱码转换</router-link> |
+    <router-link to="/randomcode">中文乱码与繁简字转换</router-link> |
     <router-link to="/about">图片Base64编码</router-link> |
     <router-link to='/timestamp'>日期时间戳转换</router-link>
   </div>
@@ -29,7 +29,6 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  background-color: #3A8EE6;
 }
 
 #nav {
@@ -47,11 +46,12 @@
   padding: 5px;
   border-radius: 5px;
   border:solid #fff 2px;
-  color: #fff;
+  color: rgb(59, 170, 96);
 }
 
 .layout {
   width: 1300px;
+  height: 770px;
   padding: 30px;
   margin: auto;
   box-shadow: 1px 1px 6px #c9d3dd;
