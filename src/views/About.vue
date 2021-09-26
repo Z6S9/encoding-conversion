@@ -5,7 +5,7 @@
         示例：“https://fastmarket.oss-cn-shenzhen.aliyuncs.com/oss/static/other/1/images/baseMap_index.jpg”
       </el-row>
       <!-- 输入图片URL -->
-      <el-row justify="center">
+      <el-row justify="center" class="change-padding">
         <el-col :span="8">
           <el-input
             v-model="picUrl"
@@ -22,7 +22,7 @@
         <el-col :span="8">
           <el-input
             v-model="picBase64"
-            placeholder="请输入您想转化的图片URL地址"
+            placeholder="请输入您想转化的图片 base64 编码"
             type="textarea"
             rows="5"
             id="input"
@@ -34,37 +34,44 @@
       </el-row>
 
       <el-row justify="center">
-        <el-col :span="2">
+        <el-col :span="5">
           <el-button type="primary" v-on:click="submit">转换</el-button>
         </el-col>
-        <el-button
-          type="text"
-          class="clear-button"
-          v-on:click="clearTest('input')"
-        >
-          清空结果
-        </el-button>
-        <el-button
-          type="text"
-          class="copy-button"
-          v-on:click="copyText('rcode')"
-        >
-          复制
-        </el-button>
-
         <el-col :span="2">
+          <el-button
+            type="text"
+            class="clear-button"
+            v-on:click="clearTest('input')"
+          >
+            清空结果
+          </el-button>
+        </el-col>
+        <el-col :span="1">
+          <el-button
+            type="text"
+            class="copy-button"
+            v-on:click="copyText('rcode')"
+          >
+            复制
+          </el-button>
+        </el-col>
+        <el-col :span="7">
           <el-button type="primary" v-on:click="submit">转换</el-button>
         </el-col>
-        <el-button
-          type="text"
-          class="clear-button"
-          v-on:click="clearTest('input')"
-        >
-          清空结果
-        </el-button>
-        <el-button type="text" class="copy-button" v-on:click="copyUrl">
-          复制
-        </el-button>
+        <el-col :span="2">
+          <el-button
+            type="text"
+            class="clear-button"
+            v-on:click="clearTest('input')"
+          >
+            清空结果
+          </el-button>
+        </el-col>
+        <el-col :span="1">
+          <el-button type="text" class="copy-button" v-on:click="copyUrl">
+            复制
+          </el-button>
+        </el-col>
       </el-row>
 
       <el-row justify="center">
@@ -112,7 +119,7 @@ export default {
           img.src = src;
           // img.style.cssText ="max-width: 100% !important, max-height: 100% !important,display: block,margin: auto"
           // 设置 img 样式无效
-          img.className = 'img';
+          img.className = "img";
           document.getElementById("container1").appendChild(img);
           //====为了在页面显示图片，可以删除====
         }
@@ -137,8 +144,8 @@ export default {
 .el-row {
   margin: 15px;
 }
-.el-col {
-  margin: 0 30px;
+.change-padding .el-col {
+  margin: 0 50px;
 }
 .change-text {
   font-weight: 700;
@@ -152,9 +159,8 @@ export default {
 .example {
   margin: -10px 0 30px 0;
 }
-.textarea{
-  overflow:hidden;
-
+.textarea {
+  overflow: hidden;
 }
 #container1 {
   width: 500px;
@@ -165,5 +171,8 @@ export default {
   max-width: 100%;
   max-height: 100%;
   margin: auto;
+}
+.copy-button {
+  color: rgb(44, 58, 75);
 }
 </style>
