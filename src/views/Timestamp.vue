@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-main>
-      <el-row justify="center">
+      <el-row >
         <el-col :span="8">
           <span>日期：</span>
           <el-date-picker
@@ -35,6 +35,7 @@
 <script>
 import { ElMessage } from "element-plus";
 import { defineComponent, reactive, toRefs } from "vue";
+import { clearText } from "../utils/clearText";
 
 export default defineComponent({
   name: "Timestamp",
@@ -98,6 +99,9 @@ export default defineComponent({
       }
       return fmt;
     },
+    clearTest(str) {
+      clearText(str);
+    },
   },
 });
 </script>
@@ -106,6 +110,7 @@ export default defineComponent({
 .timesstamp{
   position:absolute;
   top: 8px;
+  right: 600px;
 }
 .el-input__inner {
   width: 300px;
@@ -117,7 +122,7 @@ export default defineComponent({
   margin:0 80px;
 }
 .change-button{
-  margin-left: 250px;
-  margin-right: 450px;
+  margin-left: 150px;
+  margin-right: 600px;
 }
 </style>

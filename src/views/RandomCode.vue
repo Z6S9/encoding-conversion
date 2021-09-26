@@ -3,144 +3,122 @@
     <el-main>
       <div class="example-1">示例：“鍥惧簱”</div>
 
-      <el-row justify="center">
+      <el-row justify="center" class="change-padding">
         <!-- 输入乱码 -->
         <el-col :span="8">
-          <el-input
-            v-model="rcode"
+          <Textarea
+            ref="Rcode"
+            :msg="rcode"
+            id="rcode"
             placeholder="请输入您想转化的中文乱码"
-            type="textarea"
-            rows="5"
-            id="input"
-            :autosize="{ minRows: 6, maxRows: 8 }"
-            suffix-icon="false"
-            resize="none"
-          ></el-input>
+          ></Textarea>
         </el-col>
         <!-- 输入中文 -->
         <el-col :span="8">
-          <el-input
-            v-model="text"
+          <Textarea
+            ref="Text"
+            :msg="text"
+            id="text"
             placeholder="请输入您想转化的文本"
-            type="textarea"
-            rows="5"
-            id="input"
-            :autosize="{ minRows: 6, maxRows: 8 }"
-            suffix-icon="false"
-            resize="none"
-          ></el-input>
+          ></Textarea>
         </el-col>
       </el-row>
 
       <el-row justify="center">
         <!-- 输入乱码按钮 -->
-        <el-col :span="2">
+        <el-col :span="5">
           <el-button type="primary" v-on:click="toText">转换</el-button>
         </el-col>
-        <el-button
-          type="text"
-          class="clear-button"
-          v-on:click="clearTest('input')"
-        >
-          清空结果
-        </el-button>
-        <el-button
-          type="text"
-          class="copy-button"
-          v-on:click="copyText('rcode')"
-        >
-          复制
-        </el-button>
-        <!-- 输入中文按钮 -->
         <el-col :span="2">
+          <ClearButton msg="rcode"> </ClearButton>
+        </el-col>
+        <el-col :span="1">
+          <el-button
+            type="text"
+            class="copy-button"
+            v-on:click="copyText('rcode')"
+          >
+            复制
+          </el-button>
+        </el-col>
+
+        <!-- 输入中文按钮 -->
+        <el-col :span="7">
           <el-button type="primary" v-on:click="toRcode">转换</el-button>
         </el-col>
-        <el-button
-          type="text"
-          class="clear-button"
-          v-on:click="clearTest('input')"
-        >
-          清空结果
-        </el-button>
-        <el-button
-          type="text"
-          class="copy-button"
-          v-on:click="copyText('rcode')"
-        >
-          复制
-        </el-button>
+        <el-col :span="2">
+          <ClearButton msg="text"> </ClearButton>
+        </el-col>
+        <el-col :span="1">
+          <el-button
+            type="text"
+            class="copy-button"
+            v-on:click="copyText('rcode')"
+          >
+            复制
+          </el-button>
+        </el-col>
       </el-row>
 
       <div class="example-2">示例：“繁體字轉簡體字”</div>
 
-      <el-row justify="center">
+      <el-row justify="center" class="change-padding">
         <!-- 输入繁体字 -->
         <el-col :span="8">
-          <el-input
-            v-model="tradition"
+          <Textarea
+            ref="Tradition"
+            :msg="tradition"
+            id="tradition"
             placeholder="请输入您想转化的繁体字"
-            type="textarea"
-            rows="5"
-            id="input"
-            :autosize="{ minRows: 6, maxRows: 8 }"
-            resize="none"
-          ></el-input>
+          ></Textarea>
         </el-col>
         <!-- 输入简体字 -->
         <el-col :span="8">
-          <el-input
-            v-model="simplify"
+          <Textarea
+            ref="Simplify"
+            :msg="simplify"
+            id="simplify"
             placeholder="请输入您想转化的简体字"
-            type="textarea"
-            rows="5"
-            id="input"
-            :autosize="{ minRows: 6, maxRows: 8 }"
-            resize="none"
-          ></el-input>
+          ></Textarea>
         </el-col>
       </el-row>
 
       <el-row justify="center">
         <!-- 输入繁体字按钮 -->
-        <el-col :span="2">
-          <el-button type="primary" v-on:click="simplized(tradition)"
-            >转换</el-button
-          >
+        <el-col :span="5">
+          <el-button type="primary" v-on:click="simplized()">转换</el-button>
         </el-col>
-        <el-button
-          type="text"
-          class="clear-button"
-          v-on:click="clearTest('input')"
-        >
-          清空结果
-        </el-button>
-        <el-button
-          type="text"
-          class="copy-button"
-          v-on:click="copyText('rcode')"
-        >
-          复制
-        </el-button>
+        <el-col :span="2">
+          <ClearButton msg="tradition"> </ClearButton>
+        </el-col>
+        <el-col :span="1">
+          <el-button
+            type="text"
+            class="copy-button"
+            v-on:click="copyText('rcode')"
+          >
+            复制
+          </el-button>
+        </el-col>
+
         <!-- 输入简体字按钮 -->
-        <el-col :span="2">
-          <el-button type="primary" v-on:click="traditionalized(simplify)"
+        <el-col :span="7">
+          <el-button type="primary" v-on:click="traditionalized()"
             >转换</el-button
           >
         </el-col>
-        <el-button
-          type="text"
-          class="clear-button"
-          v-on:click="clearTest('input')"
-        >
-          清空结果
-        </el-button>
-        <el-button
-          type="text"
-          class="copy-button"
-          v-on:click="copyText('rcode')"
-        >
-          复制
-        </el-button>
+        <el-col :span="2">
+          <ClearButton msg="simplify"> </ClearButton>
+        </el-col>
+        <el-col :span="1">
+          <el-button
+            type="text"
+            class="copy-button"
+            v-on:click="copyText('rcode')"
+          >
+            复制
+          </el-button>
+        </el-col>
       </el-row>
     </el-main>
   </el-container>
@@ -165,7 +143,7 @@ export default {
   },
   methods: {
     toText() {
-      var str = this.rcode;
+      var str = this.$refs.Rcode.msg;
       var ansi = require("gbk-encode").encode(str);
       ansi.replace(/%/g, "%25");
       console.log(ansi);
@@ -174,15 +152,15 @@ export default {
       this.text = tex;
     },
     toRcode() {
-      var str = this.text;
+      var str = this.$refs.Text.msg;
       var ut = encodeURI(str);
       var y = require("gbk-encode").decode(ut);
       console.log(y);
       this.rcode = y;
     },
-
     // 繁化函数
-    traditionalized(cc) {
+    traditionalized() {
+      var cc = this.$refs.Simplify.msg;
       var str = "";
       for (var i = 0; i < cc.length; i++) {
         if (this.charPYStr.indexOf(cc.charAt(i)) != -1)
@@ -190,10 +168,10 @@ export default {
         else str += cc.charAt(i);
       }
       this.tradition = str;
-      console.log(str);
     },
     //简化函数
-    simplized(cc) {
+    simplized() {
+      var cc = this.$refs.Tradition.msg;
       var str = "";
       for (var i = 0; i < cc.length; i++) {
         if (this.ftPYStr.indexOf(cc.charAt(i)) != -1)
@@ -223,7 +201,7 @@ export default {
 .el-row {
   margin: 15px;
 }
-.el-col {
+.change-padding .el-col {
   margin: 0 50px;
 }
 .change-text {
@@ -235,10 +213,11 @@ export default {
   color: #0474c8;
   cursor: pointer;
 }
-.example-1, .example-2{
+.example-1,
+.example-2 {
   margin: 50px;
 }
-.example-1{
+.example-1 {
   margin-top: 0px;
 }
 </style>
