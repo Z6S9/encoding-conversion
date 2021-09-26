@@ -15,51 +15,37 @@
     </el-col>
   </el-row>
   <el-row justify="center" align="middle">
-    <el-col :span="2" class="change-text">
+    <span class="change-text">
       转换中文为:
-    </el-col>
-    <el-col :span="2">
-      <el-button
-        type="primary"
-        size="medium"
-        v-on:click="encodeFunction('base64')"
-        >base64</el-button
-      >
-    </el-col>
-    <el-col :span="2">
-      <el-button
-        type="primary"
-        size="medium"
-        v-on:click="encodeFunction('unicode')"
-        >Unicode</el-button
-      >
-    </el-col>
-    <el-col :span="2">
-      <el-button
-        type="primary"
-        size="medium"
-        v-on:click="encodeFunction('utf8')"
-        >UTF-8</el-button
-      >
-    </el-col>
-    <el-col :span="2">
-      <el-button
-        type="primary"
-        size="medium"
-        v-on:click="encodeFunction('gbk')"
-      >
-        GBK
-      </el-button>
-    </el-col>
+    </span>
+
     <el-button
-        type="text"
-        class="clear-button"
-        v-on:click="clearTest('input')"
-      >
-        清空结果
-      </el-button>
+      type="primary"
+      size="medium"
+      v-on:click="encodeFunction('base64')"
+      >base64</el-button
+    >
+
+    <el-button
+      type="primary"
+      size="medium"
+      v-on:click="encodeFunction('unicode')"
+      >Unicode</el-button
+    >
+
+    <el-button type="primary" size="medium" v-on:click="encodeFunction('utf8')"
+      >UTF-8</el-button
+    >
+
+    <el-button type="primary" size="medium" v-on:click="encodeFunction('gbk')">
+      GBK
+    </el-button>
+
+    <el-button type="text" class="clear-button" v-on:click="clearTest('input')">
+      清空结果
+    </el-button>
   </el-row>
-  
+
   <!-- base64 && unicode -->
   <el-row justify="center" align="middle" style="margin-top:50px ">
     <!-- base64文本框 -->
@@ -75,7 +61,7 @@
       ></el-input>
     </el-col>
     <!-- unicode文本框 -->
-    <el-col :span="6" :offset="1">
+    <el-col :span="6">
       <el-input
         v-model="textUnicode"
         id="Unicode"
@@ -92,7 +78,7 @@
     </el-button>
   </el-col> -->
   </el-row>
-  
+
   <el-row>
     <el-col :span="6" style="margin-left:320px">
       <el-button
@@ -111,7 +97,11 @@
       </el-button>
     </el-col>
     <el-col :span="6" style="margin-left:80px">
-      <el-button type="info" size="medium" v-on:click="decodeFunction('unicode')">
+      <el-button
+        type="info"
+        size="medium"
+        v-on:click="decodeFunction('unicode')"
+      >
         Unicode转中文
       </el-button>
       <el-button
@@ -123,7 +113,7 @@
       </el-button>
     </el-col>
   </el-row>
-  
+
   <!-- utf8 && gbk -->
   <el-row justify="center" align="middle" style="margin-top:50px;">
     <!-- utf8文本框 -->
@@ -140,7 +130,7 @@
       ></el-input>
     </el-col>
     <!-- gbk文本框 -->
-    <el-col :span="6" :offset="1">
+    <el-col :span="6">
       <el-input
         v-model="textGbk"
         id="gbk"
@@ -158,7 +148,7 @@
     </el-button>
   </el-col> -->
   </el-row>
-  
+
   <el-row>
     <el-col :span="6" style="margin-left:320px">
       <el-button type="info" size="medium" v-on:click="decodeFunction('utf8')">
@@ -176,11 +166,7 @@
       <el-button type="info" size="medium" v-on:click="decodeFunction('gbk')">
         GBK转中文
       </el-button>
-      <el-button
-        type="text"
-        class="clear-button"
-        v-on:click="clearTest('gbk')"
-      >
+      <el-button type="text" class="clear-button" v-on:click="clearTest('gbk')">
         清空结果
       </el-button>
     </el-col>
@@ -244,9 +230,9 @@ export default {
           break;
         case "utf8":
           str = this.textUtf8;
-          input= decodeURI(str);
+          input = decodeURI(str);
           this.textInput = input;
-          console.log(str,input)
+          console.log(str, input);
           break;
         case "gbk":
           str = this.textGbk;
@@ -305,9 +291,14 @@ export default {
 </script>
 
 <style scoped>
-
 .el-row {
   margin: 15px;
+}
+.el-button{
+  margin:0 20px;
+}
+.el-col {
+  margin: 0 80px;
 }
 .change-text {
   font-weight: 700;
