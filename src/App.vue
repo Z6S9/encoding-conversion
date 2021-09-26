@@ -72,16 +72,16 @@
   background-color: #fff;
 }
 
-.fade-enter {
+/* .fade-enter {
   transfrom: translateY(100%)
-}
+} */
 
 /* .fade-leave-to {
   transform: translateY(-100%);
 } */
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 0.2s ease, transfrom 0.2s ease;
+  transition: opacity 0.2s ease;
 }
 
 .fade-enter-from, .fade-leave-to {
